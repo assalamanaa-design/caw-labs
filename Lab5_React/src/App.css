@@ -1,0 +1,119 @@
+/* Global */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eaeaea;
+  margin: 0;
+  padding: 0;
+}
+
+/* App container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Navigation buttons */
+.exercise-nav {
+  margin: 20px 0;
+}
+
+.exercise-nav button {
+  margin: 0 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.exercise-nav button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Exercise page container */
+.exercise-page {
+  width: 90%;
+  max-width: 900px;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: background-color 0.3s;
+}
+
+/* Different background for each exercise */
+.exercise1 .exercise-page {
+  background-color: #fff7e6; /* Cream */
+}
+.exercise2 .exercise-page {
+  background-color: #e6f7ff; /* Light blue */
+}
+.exercise3 .exercise-page {
+  background-color: #f0e6ff; /* Light purple */
+}
+.exercise4 .exercise-page {
+  background-color: #e6ffe6; /* Light green */
+}
+
+/* Headings */
+h1 {
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #333;
+}
+
+/* Buttons inside exercises */
+button {
+  margin: 6px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.2s;
+}
+
+button:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+/* Paragraphs and list items */
+p, li {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: #333;
+  color: #fff;
+  padding: 8px 12px;
+  margin: 6px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+ul li:hover {
+  background-color: #555;
+}
+
+/* Divider */
+hr {
+  margin: 25px 0;
+  border: 0;
+  height: 1px;
+  background-color: #ccc;
+}
