@@ -1,481 +1,770 @@
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Palestine - Information Card</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: #f8f5f0;
-            color: #333;
-            line-height: 1.8;
-            min-height: 100vh;
-            padding: 20px;
-            background-image: linear-gradient(rgba(248, 245, 240, 0.9), rgba(248, 245, 240, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f5f0"/><path d="M50,10 Q70,30 50,50 Q30,70 50,90" stroke="%23007a3d" stroke-width="2" fill="none"/></svg>');
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            border: 1px solid #e0d6c8;
-        }
-        
-        header {
-            background: linear-gradient(to right, #007a3d, #000000, #ce1126);
-            color: white;
-            text-align: center;
-            padding: 50px 20px;
-            position: relative;
-        }
-        
-        .main-title {
-            font-size: 4.5rem;
-            margin-bottom: 10px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
-            letter-spacing: 2px;
-            font-weight: 800;
-        }
-        
-        .subtitle {
-            font-size: 2rem;
-            opacity: 0.9;
-            font-weight: 500;
-            margin-top: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .palestine-subtitle {
-            font-size: 1.5rem;
-            opacity: 0.9;
-            font-weight: 300;
-            margin-top: 10px;
-        }
-        
-        .islamic-symbol {
-            font-size: 3rem;
-            margin-top: 20px;
-            display: inline-block;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        .full-width-map {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            border-bottom: 5px solid #007a3d;
-            background: #f8f9fa;
-            padding: 20px 0;
-        }
-        
-        .map-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .full-width-map img {
-            width: 100%;
-            max-width: 900px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .map-overlay {
-            margin-top: 15px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 15px;
-            text-align: center;
-            border-radius: 8px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .content {
-            padding: 40px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        
-        h2 {
-            color: #007a3d;
-            border-bottom: 2px solid #ce1126;
-            padding-bottom: 8px;
-            margin: 25px 0 15px;
-            font-size: 1.8rem;
-            grid-column: 1 / -1;
-            display: flex;
-            align-items: center;
-        }
-        
-        h2:before {
-            content: "☪";
-            margin-right: 10px;
-            color: #ce1126;
-        }
-        
-        .flag-section {
-            text-align: center;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid #eaeaea;
-            transition: transform 0.3s ease;
-        }
-        
-        .flag-section:hover {
-            transform: translateY(-5px);
-        }
-        
-        .flag-image {
-            width: 100%;
-            max-width: 400px;
-            height: 250px;
-            object-fit: contain;
-            margin: 0 auto;
-            display: block;
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .flag-caption {
-            margin-top: 15px;
-            font-weight: 600;
-            color: #007a3d;
-            font-size: 1.1rem;
-        }
-        
-        .info-list {
-            list-style-type: none;
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            border: 1px solid #eaeaea;
-        }
-        
-        .info-list li {
-            padding: 12px 15px;
-            margin-bottom: 10px;
-            background: white;
-            border-radius: 8px;
-            border-left: 4px solid #ce1126;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            display: flex;
-            transition: transform 0.2s ease;
-        }
-        
-        .info-list li:hover {
-            transform: translateX(5px);
-        }
-        
-        .info-list strong {
-            color: #007a3d;
-            min-width: 180px;
-            display: inline-block;
-        }
-        
-        .islamic-section {
-            grid-column: 1 / -1;
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 10px;
-            border: 1px solid #eaeaea;
-            position: relative;
-        }
-        
-        .islamic-section:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(to bottom, #007a3d, #ce1126);
-            border-radius: 5px 0 0 5px;
-        }
-        
-        .islamic-section p {
-            margin-bottom: 20px;
-            text-align: justify;
-            padding: 0 10px;
-            font-size: 1.1rem;
-        }
-        
-        .islamic-section strong {
-            color: #007a3d;
-        }
-        
-        .islamic-section em {
-            color: #ce1126;
-            font-style: italic;
-        }
-        
-        .islamic-highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .islamic-item {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            border: 1px solid #eaeaea;
-            transition: transform 0.3s ease;
-        }
-        
-        .islamic-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .islamic-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #007a3d;
-        }
-        
-        .quran-verse {
-            background: linear-gradient(135deg, #007a3d, #005a2d);
-            color: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
-            font-size: 1.3rem;
-            line-height: 1.8;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            font-style: italic;
-        }
-        
-        .quran-ref {
-            display: block;
-            margin-top: 15px;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        .call-to-action {
-            background: linear-gradient(135deg, #ce1126, #a00d1e);
-            color: white;
-            padding: 30px;
-            text-align: center;
-            border-radius: 10px;
-            margin: 30px 0 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .call-to-action h3 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-        
-        footer {
-            background: #f1f1f1;
-            text-align: center;
-            padding: 25px;
-            margin-top: 30px;
-            border-top: 1px solid #ddd;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 10px;
-        }
-        
-        .footer-links a {
-            color: #007a3d;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: #ce1126;
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 768px) {
-            .content {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 20px;
-            }
-            
-            .main-title {
-                font-size: 3rem;
-            }
-            
-            .subtitle {
-                font-size: 1.5rem;
-            }
-            
-            .info-list li {
-                flex-direction: column;
-            }
-            
-            .info-list strong {
-                min-width: auto;
-                margin-bottom: 5px;
-            }
-            
-            .islamic-highlights {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .main-title {
-                font-size: 2.2rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gaza Genocide</title>
+
+  <!-- ======= CSS (embedded) ======= -->
+  <style>
+    :root{
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --accent: #c43b3b;
+      --accent-dark: #a32e2e;
+      --accent-light: #f8eaea;
+      --accent-gradient: linear-gradient(135deg, #c43b3b 0%, #a32e2e 100%);
+      --muted: #666;
+      --light-gray: #e9ecef;
+      --max-width: 1100px;
+      --border-radius: 12px;
+      --shadow: 0 6px 18px rgba(12,12,12,0.08);
+      --shadow-hover: 0 10px 25px rgba(12,12,12,0.12);
+      --transition: all 0.3s ease;
+    }
+    
+    *{box-sizing:border-box}
+    
+    body{
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      margin:0;
+      padding:0;
+      background: linear-gradient(135deg, var(--bg) 0%, #ffffff 100%);
+      color:#111;
+      display:flex;
+      justify-content:center;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .container{
+      max-width:var(--max-width);
+      width:100%;
+      padding: 2rem 1.5rem;
+    }
+    
+    /* Header Styling */
+    .page-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .page-title {
+      font-size: 2.5rem;
+      margin: 0 0 0.5rem 0;
+      color: #222;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .page-subtitle {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+    
+    h1{
+      font-size: 2.2rem;
+      margin: 0 0 1.5rem 0;
+      color: #222;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--accent);
+      position: relative;
+      font-weight: 700;
+    }
+    
+    h1:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 80px;
+      height: 2px;
+      background-color: var(--accent);
+    }
+    
+    h2{ 
+      margin-top: 2.2rem; 
+      font-size: 1.5rem; 
+      color: #333;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--light-gray);
+      font-weight: 600;
+    }
+    
+    h3 {
+      font-size: 1.3rem;
+      color: #444;
+      margin-top: 1.8rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    
+    .lead{ 
+      font-size: 1.15rem; 
+      line-height: 1.7; 
+      color: #333; 
+      background-color: var(--accent-light);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--accent);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    
+    p{ 
+      line-height: 1.7; 
+      margin: 1.2rem 0; 
+      color: #444;
+    }
+    
+    a{ 
+      color: var(--accent); 
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: var(--accent);
+      transition: var(--transition);
+    }
+    
+    a:hover{ 
+      color: var(--accent-dark);
+    }
+    
+    a:hover:after {
+      width: 100%;
+    }
+    
+    /* تحسين تموضع الصور فقط */
+    .block-img{
+      display:block;
+      max-width:100%;
+      height:auto;
+      margin: 2rem auto;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 3px solid transparent;
+    }
+    
+    .block-img:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--accent-light);
+    }
+    
+    .inline-img{
+      float: right;
+      margin: 0.5rem 0 1rem 2rem;
+      border-radius: var(--border-radius);
+      width: 220px;
+      max-width: 40%;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    
+    .inline-img:hover {
+      transform: scale(1.02) rotate(1deg);
+      border-color: var(--accent-light);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    /* تحسين الفقرات التي تحتوي على صور عائمة */
+    .img-paragraph {
+      overflow: hidden;
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      background: var(--card);
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--accent);
+      box-shadow: var(--shadow);
+    }
+    
+    .video-wrapper{
+      margin-top: 1.2rem;
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--light-gray);
+    }
+    
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+    .video-controls{ 
+      margin-top: 1.5rem; 
+      display: flex; 
+      gap: 0.8rem; 
+      flex-wrap: wrap;
+    }
+    
+    button{
+      padding: 0.7rem 1.2rem;
+      border-radius: 6px;
+      border: none;
+      background: var(--accent-gradient);
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 8px rgba(196, 59, 59, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(196, 59, 59, 0.3);
+    }
+    
+    button:active {
+      transform: translateY(-1px);
+    }
+    
+    ul{ 
+      margin-top: 1.5rem; 
+      padding-left: 1.5rem; 
+      list-style-type: none;
+    }
+    
+    ul li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    ul li:before {
+      content: "•";
+      color: var(--accent);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      font-size: 1.2rem;
+    }
+    
+    footer{ 
+      margin-top: 3rem; 
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--light-gray);
+      text-align: center;
+    }
+    
+    .muted{ 
+      color: var(--muted); 
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    /* Card styling for sections */
+    .card {
+      background: var(--card);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+      border: 1px solid var(--light-gray);
+      transition: var(--transition);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .famine-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .stat-card {
+      background: var(--card);
+      padding: 1.5rem 1rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+      border-top: 4px solid var(--accent);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    
+    /* Navigation */
+    .page-nav {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .nav-btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      font-weight: 500;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    
+    .nav-btn:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    
+    /* Progress bar */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: transparent;
+      z-index: 1000;
+    }
+    
+    .progress-bar {
+      height: 4px;
+      background: var(--accent-gradient);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--accent-gradient);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: var(--transition);
+      opacity: 0;
+      visibility: hidden;
+      z-index: 999;
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px){
+      .container {
+        padding: 1.5rem 1rem;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .page-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      h2 {
+        font-size: 1.4rem;
+      }
+      
+      .lead {
+        padding: 1.2rem;
+        font-size: 1.05rem;
+      }
+      
+      .inline-img{ 
+        float: none; 
+        display: block; 
+        margin: 1.5rem auto;
+        width: 100%;
+        max-width: 400px;
+      }
+      
+      .img-paragraph {
+        background: var(--card);
+        padding: 1.2rem;
+        border-left: 4px solid var(--accent);
+      }
+      
+      .video-controls {
+        justify-content: center;
+      }
+      
+      .famine-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .card {
+        padding: 1.5rem;
+      }
+      
+      .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px){
+      .container {
+        padding: 1rem 0.8rem;
+      }
+      
+      .page-title {
+        font-size: 1.8rem;
+      }
+      
+      .page-subtitle {
+        font-size: 1rem;
+      }
+      
+      h1 {
+        font-size: 1.6rem;
+      }
+      
+      h2 {
+        font-size: 1.3rem;
+      }
+      
+      .lead {
+        padding: 1rem;
+      }
+      
+      .card {
+        padding: 1.2rem;
+      }
+      
+      .inline-img {
+        width: 100%;
+        max-width: 100%;
+      }
+      
+      .famine-stats {
+        grid-template-columns: 1fr;
+      }
+      
+      .video-controls {
+        flex-direction: column;
+      }
+      
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <div class="main-title">FREE PALESTINE</div>
-            <div class="subtitle">Land of Faith, Freedom & Resistance</div>
-            <div class="palestine-subtitle">State of Palestine - Islamic Heritage</div>
-            <div class="islamic-symbol">☪</div>
-        </header>
-        
-        <div class="full-width-map">
-            <div class="map-container">
-                
-                <img src="map.jpg" alt="Map of Palestine">
-                <div class="map-overlay">
-                    <h3>Historical Map of Palestine</h3>
-                </div>
-            </div>
-        </div>
-        
-        <div class="content">
-            <h2>Flag</h2>
-            
-            <div class="flag-section">
-                <img src="palestine-flag.jpg" 
-                     alt="Palestinian Flag" class="flag-image">
-                <div class="flag-caption">Flag of Palestine</div>
-            </div>
-            
-            <div>
-                <h2>Key Information</h2>
-                <ul class="info-list">
-                    <li><strong>Capital:</strong> Al-Quds (Jerusalem)</li>
-                    <li><strong>Area:</strong> 27,027 km²</li>
-                    <li><strong>Official Language:</strong> Arabic</li>
-                    <li><strong>Religion:</strong> Islam (majority) & Christianity</li>
-                    <li><strong>Main Cities:</strong> Al-Quds, Gaza, Ramallah, Nablus</li>
-                    <li><strong>Population:</strong> Approximately 5.3 million</li>
-                    <li><strong>Currency:</strong> Israeli shekel, Jordanian dinar</li>
-                </ul>
-            </div>
-            
-            <div class="islamic-section">
-                <h2>Brief History</h2>
-                
-                <div class="quran-verse">
-                    "Exalted is He who took His Servant by night from al-Masjid al-Haram to al-Masjid al-Aqsa, whose surroundings We have blessed, to show him of Our signs. Indeed, He is the Hearing, the Seeing."
-                    <span class="quran-ref">(Surah Al-Isra, Verse 1)</span>
-                </div>
-                
-                <p><strong>Palestine</strong> represents the heart of the Islamic world and its precious jewel. It is the land of Al-Isra and Mi'raj, the night journey of Prophet Muhammad ﷺ, and the first Qibla and third holiest site in Islam. Palestine embraces Al-Aqsa Mosque, which Allah has blessed its surroundings, and it is one of the three mosques to which journey is recommended.</p>
-                
-                <p>The <strong>Blessed Land</strong> witnessed the journeys of prophets and messengers, from Abraham (Ibrahim) to Jesus (Isa), peace be upon them, up to the final Prophet Muhammad ﷺ. It is a holy land connected to the history of Islam from its beginning and was the first Qibla of Muslims before the direction was changed to the Kaaba.</p>
-                
-                <p>Throughout history, Palestine has remained <em>a symbol of Islamic resilience</em> and <em>a stronghold of resistance</em> against invaders, defended by Muslims across ages. Today, Al-Aqsa Mosque and Jerusalem remain in the hearts of Muslims worldwide, representing <em>a central cause</em> for the entire Islamic Ummah.</p>
-                
-                <div class="call-to-action">
-                    <h3>Stand With Palestine</h3>
-                    <p>Justice, Freedom, and Dignity for the Palestinian People</p>
-                </div>
-                
-                <div class="islamic-highlights">
-                    <div class="islamic-item">
-                        <div class="islamic-icon">🕌</div>
-                        <h3>Al-Aqsa Mosque</h3>
-                        <p>First Qibla, third holiest site, and place of Isra</p>
-                    </div>
-                    <div class="islamic-item">
-                        <div class="islamic-icon">📿</div>
-                        <h3>The Blessed Land</h3>
-                        <p>Mentioned in the Quran and connected to prophets</p>
-                    </div>
-                    <div class="islamic-item">
-                        <div class="islamic-icon">🕋</div>
-                        <h3>First Qibla</h3>
-                        <p>First direction of prayer before changing to Kaaba</p>
-                    </div>
-                    <div class="islamic-item">
-                        <div class="islamic-icon">☪</div>
-                        <h3>Symbol of Unity</h3>
-                        <p>Represents a central cause for the Islamic Ummah</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <footer>
-            <p>Free Palestine Information Card | Celebrating Islamic Heritage and the Struggle for Freedom</p>
-            <div class="footer-links">
-                <a href="#">Islamic Heritage</a>
-                <a href="#">Al-Aqsa Mosque</a>
-                <a href="#">Islamic History</a>
-            </div>
-        </footer>
+<body id="Top">
+  <!-- Progress bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  
+  <!-- Back to top button -->
+  <div class="back-to-top" id="backToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 20L12 4M12 4L5 11M12 4L19 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  
+  <div class="container">
+    <!-- Page Header -->
+    <header class="page-header">
+      <h1 class="page-title">Gaza Genocide</h1>
+      <p class="page-subtitle">Documenting the humanitarian crisis & ongoing suffering in Gaza since October 7</p>
+    </header>
+    
+    <!-- Navigation -->
+    <div class="page-nav">
+      <a href="#main-content" class="nav-btn">Main Content</a>
+      <a href="#video-section" class="nav-btn">Famine Crisis</a>
+      <a href="#resources" class="nav-btn">Resources</a>
     </div>
 
-    <script>
-       
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('img');
-            
-            images.forEach(img => {
-                img.addEventListener('error', function() {
-                    this.alt = 'Image failed to load. Please check the file path.';
-                    console.log('Image failed to load: ' + this.src);
-                });
-            });
+    <!-- ======= Main Content ======= -->
+    <div class="card" id="main-content">
+      <h1>Main Content</h1>
+
+      <p class="lead">
+        Since October 7, Gaza has witnessed a devastating humanitarian crisis. Thousands have been killed and injured, including many children and women, and millions have been displaced. Hospitals, schools and other vital infrastructure suffered extensive damage.
+      </p>
+
+      <p>
+        Reports (replace with official sources when presenting) mention high numbers of martyrs and wounded, including a tragic toll among children and women. Infrastructure losses include destroyed homes, damaged hospitals and blocked supply lines that worsen shortages of food, water and medical aid.
+      </p>
+
+      <!-- image with invalid src (will show alt until JS fallback) -->
+      <img id="img1" class="block-img" src="non-existent-image.jpg" alt="Image not found — Gaza destruction (alt text shown)">
+
+      <p>
+        The humanitarian situation is urgent: many hospitals are overwhelmed, and fuel/electricity shortages hamper care and water supply. (Ref: sehatty.ps / media reports)
+      </p>
+
+      <!-- valid online image (replace with local file names after download) -->
+      <img id="validImg" class="block-img" src="img3.jpg" alt="Gaza destruction">
+
+      <!-- inline image inside paragraph -->
+      <div class="img-paragraph">
+        <p>
+          The suffering continues
+          <img class="inline-img" src="img4.webp" alt="Gaza destruction">
+          as humanitarian aid struggles to enter the area. When an image is inline and floated, text wraps around it. The ongoing blockade has severely limited the flow of essential supplies, leaving millions of Palestinians in desperate need of food, medicine, and basic necessities.
+        </p>
+      </div>
+    </div>
+
+    <!-- ======= Video Section ======= -->
+    <div class="card" id="video-section">
+      <h2>Famine in Gaza</h2>
+      <div class="video-wrapper">
+        <!-- فيديو YouTube حقيقي عن المجاعة في غزة -->
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/51BvCUpcBTc" 
+            title="Gaza famine: Children dying from malnutrition as Israel blocks aid - Al Jazeera English"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="video-controls">
+          <button onclick="window.open('https://www.youtube.com/watch?v=51BvCUpcBTc', '_blank')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.75 9L19 12.25L14.75 15.5V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="3" y="5" width="14" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Watch on YouTube
+          </button>
+          <button onclick="copyVideoLink()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="9" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Copy Video Link
+          </button>
+        </div>
+        <p class="muted">Video Source: Al Jazeera English - "Gaza famine: Children dying from malnutrition as Israel blocks aid"</p>
+      </div>
+      
+      <h3>About the Famine Crisis</h3>
+      <p>The famine in Gaza has reached catastrophic levels, with over 90% of the population facing acute food insecurity. Children are particularly vulnerable, with many suffering from severe malnutrition.</p>
+      
+      <div class="famine-stats">
+        <div class="stat-card">
+          <div class="stat-number">2M+</div>
+          <div class="stat-label">People facing food shortages</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">50%</div>
+          <div class="stat-label">Children malnourished</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">90%</div>
+          <div class="stat-label">Population food insecure</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10%</div>
+          <div class="stat-label">Aid deliveries allowed</div>
+        </div>
+      </div>
+      
+      <ul>
+        <li>Over 2 million people face severe food shortages daily</li>
+        <li>More than 50% of children under 5 suffer from acute malnutrition</li>
+        <li>Access to clean water is available to less than 15% of population</li>
+        <li>Humanitarian aid deliveries are regularly blocked or delayed</li>
+        <li>Medical supplies are critically low in most hospitals</li>
+      </ul>
+    </div>
+
+    <!-- ======= Links & Resources ======= -->
+    <div class="card" id="resources">
+      <h1>Links & Resources</h1>
+
+      <ul>
+        <li><a href="https://alqassam.ps/" rel="noopener">Al-Qassam Official Website</a></li>
+        <li><a href="Lab1_Exo1.html">Palestine Information Card (Exercice 1)</a></li>
+        <li><a href="Lab1_Exo1.html#point1">Go to 'Brief History' (Exercice 1 )</a></li>
+        <li><a href="https://www.aljazeera.com/" target="_blank" rel="noopener">Al Jazeera (opens in new tab)</a></li>
+        
+        <li><a href="#Top">Go to Top</a></li>
+      </ul>
+    </div>
+
+    <footer>
+      <p class="muted">This page is part of a project documenting the humanitarian crisis in Gaza - please share information from reliable sources only</p>
+    </footer>
+  </div>
+
+  <!-- ======= JavaScript (embedded) ======= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Image fallback: replace broken images with a simple fallback image (prevent infinite loop)
+      const defaultFallback = 'https://upload.wikimedia.org/wikipedia/commons/6/6f/No_image_available.svg';
+      document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', () => {
+          if (!img.dataset.fallbackApplied) {
+            img.dataset.fallbackApplied = 'true';
+            img.src = defaultFallback;
+            img.alt = img.alt || 'Fallback image';
+            console.warn('Image not found — replaced with fallback for', img);
+          }
         });
-    </script>
+      });
+
+      // Smooth scroll for internal anchors (#...)
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (!href || href === '#') return;
+          const id = href.slice(1);
+          const target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (id === 'Top') {
+              target.style.transition = 'background-color 0.6s ease';
+              target.style.backgroundColor = '#fff3f3';
+              setTimeout(() => target.style.backgroundColor = 'transparent', 800);
+            }
+          }
+        });
+      });
+      
+      // Progress bar
+      window.onscroll = function() {
+        updateProgressBar();
+        toggleBackToTopButton();
+      };
+      
+      function updateProgressBar() {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      }
+      
+      function toggleBackToTopButton() {
+        const backToTopButton = document.getElementById("backToTop");
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+          backToTopButton.classList.add("visible");
+        } else {
+          backToTopButton.classList.remove("visible");
+        }
+      }
+      
+      // Back to top button functionality
+      document.getElementById("backToTop").addEventListener("click", function() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+    });
+
+    // Function to copy video link
+    function copyVideoLink() {
+      const videoUrl = 'https://www.youtube.com/watch?v=51BvCUpcBTc';
+      navigator.clipboard.writeText(videoUrl).then(() => {
+        alert('Video link copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = videoUrl;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Video link copied to clipboard!');
+      });
+    }
+  </script>
 </body>
 </html>
